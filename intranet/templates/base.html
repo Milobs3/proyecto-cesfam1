@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet CESFAM</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    {% block extra_head %}
+    {% endblock %}
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Intranet CESFAM</h2>
+        
+        <div class="user-display">
+            {% if user.is_authenticated %}
+                Bienvenido, <b>{{ user.username|truncatechars:18 }}</b>
+            {% endif %}
+        </div>
+        
+        {% if user.is_authenticated %}
+        <ul>
+            
+            <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                <a href="{% url 'dashboard' %}">Mi Portal</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'documentos' %}active{% endif %}">
+                <a href="{% url 'documentos' %}">Repositorio</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'calendario' %}active{% endif %}">
+                <a href="{% url 'calendario' %}">Calendario</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'gestion_solicitudes' %}active{% endif %}">
+                <a href="{% url 'gestion_solicitudes' %}">Solicitudes</a>
+            </li>
+             <li class="{% if request.resolver_match.url_name == 'historial_personal' %}active{% endif %}">
+                <a href="{% url 'historial_personal' %}">Mi Historial (Permisos)</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'manual' %}active{% endif %}">
+                <a href="{% url 'manual' %}">Manual de Usuario</a>
+            </li>
+            
+            {% if user.is_staff %}
+            <hr style="border-color: #4b6b8b; margin: 15px 0;">
+            <li style="padding: 10px; color: #ecf0f1; text-transform: uppercase; font-size: 0.8em; font-weight: bold;">Gestión</li>
+            
+            <li class="{% if request.resolver_match.url_name == 'reporte_solicitudes' %}active{% endif %}">
+                <a href="{% url 'reporte_solicitudes' %}">Bandeja de Solicitudes</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'gestion_dias' %}active{% endif %}">
+                <a href="{% url 'gestion_dias' %}">Modificar Días (RRHH)</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'gestion_documentos' %}active{% endif %}">
+                <a href="{% url 'gestion_documentos' %}">Cargar Documento</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'gestion_calendario' %}active{% endif %}">
+                <a href="{% url 'gestion_calendario' %}">Crear Evento</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'gestion_licencias' %}active{% endif %}">
+                <a href="{% url 'gestion_licencias' %}">Ingresar Licencia</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'reporte_licencias' %}active{% endif %}">
+                <a href="{% url 'reporte_licencias' %}">Reporte Licencias</a>
+            </li>
+            {% endif %}
+
+            {% if user.is_superuser %}
+            <hr style="border-color: #4b6b8b; margin: 15px 0;">
+            <li style="padding: 10px; color: #ecf0f1; text-transform: uppercase; font-size: 0.8em; font-weight: bold;">Administración</li>
+
+            <li class="{% if request.resolver_match.url_name == 'roles_gestion' %}active{% endif %}">
+                <a href="{% url 'roles_gestion' %}">Gestionar Roles</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'logs_auditoria' %}active{% endif %}">
+                <a href="{% url 'logs_auditoria' %}">Ver Logs</a>
+            </li>
+            {% endif %}
+
+            <hr style="border-color: #4b6b8b; margin: 15px 0;">
+            <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        </ul>
+        {% endif %}
+    </nav>
+
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% block extra_js %}
+    {% endblock %}
+</body>
+</html>

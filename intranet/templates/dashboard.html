@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block content %} <header class="header">
+    <h1>Bienvenido, {{ user.username }}</h1>
+</header>
+
+<section class="card-container">
+    <div class="card">
+        <h3>Días Administrativos</h3>
+        <div class="value">{{ dias_admin }}</div>
+    </div>
+    <div class="card">
+        <h3>Vacaciones Restantes</h3>
+        <div class="value">{{ dias_vacas }}</div>
+    </div>
+</section>
+
+<section class="content-box">
+    <h2>Comunicados Oficiales</h2>
+    {% for com in comunicados %}
+        <div class="comunicado">
+            <h4>{{ com.titulo }} ({{ com.fecha_publicacion|date:"d-m-Y" }})</h4>
+            <p>{{ com.cuerpo }}</p>
+        </div>
+    {% empty %}
+        <p>No hay comunicados recientes.</p>
+    {% endfor %}
+</section>
+
+{% endblock %}

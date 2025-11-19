@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+<header class="header">
+    <h1>Gestión de Días (RRHH)</h1>
+</header>
+
+<section class="content-box">
+    <h2>Modificar Días de Funcionario (RF11)</h2>
+    <p>Seleccione un funcionario y actualice sus días disponibles.</p>
+
+    <form class="form-container" method="POST" action="{% url 'gestion_dias' %}">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="lista-funcionarios">Seleccionar Funcionario</label>
+            <select id="lista-funcionarios" name="funcionario_id">
+                <option value="">--- Seleccione Funcionario ---</option>
+                {% for f in funcionarios %}
+                <option value="{{ f.pk }}">{{ f.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        {{ form.admin_restantes }}
+        {{ form.vacaciones_restantes }}
+        
+        <button type="submit" class="action-button">
+            Actualizar Días
+        </button>
+    </form>
+</section>
+
+{% endblock %}

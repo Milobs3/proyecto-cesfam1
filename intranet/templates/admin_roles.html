@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block content %}
+<header class="header">
+    <h1>Panel de Administración</h1>
+</header>
+
+<section class="content-box">
+    <h2>Gestionar Roles del Sistema</h2>
+    
+    <p style="margin-bottom: 15px;">
+        <a href="{% url 'admin:app_list' app_label='intranet' %}" class="action-button">Añadir/Editar Usuarios y Roles</a>
+    </p>
+
+    <table style="width:100%; border-collapse: collapse;">
+        <thead style="text-align: left;">
+            <tr>
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">ID Rol</th>
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Nombre del Rol</th>
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rol in roles %}
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">{{ rol.pk }}</td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">{{ rol.nombre_rol }}</td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;"><a href="{% url 'admin:intranet_roles_change' rol.pk %}">Editar Permisos</a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" style="padding: 10px; text-align: center;">No hay roles definidos en la base de datos.</td>
+            </tr>
+            {% endfor %}
+            
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">1</td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">Funcionario Administrativo</td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;"><a href="#">Editar Permisos</a></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+{% endblock %}

@@ -1,0 +1,258 @@
+/* --- Reseteo Básico --- */
+body, h1, h2, h3, h4, ul, p {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex; /* La magia: pone el menú al lado del contenido */
+    height: 100vh;
+    background-color: #f4f7fa; /* Un fondo gris claro */
+}
+
+/* --- 1. El Menú Lateral (Sidebar) --- */
+.sidebar {
+    width: 250px;
+    /* Color Azul/Petróleo del logo de Temuco */
+    background-color: #1E4A7B; 
+    color: white;
+    padding: 20px;
+    height: 100vh; /* Ocupa toda la altura */
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+.sidebar ul {
+    list-style: none; /* Saca los puntos de la lista */
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    text-decoration: none; /* Saca el subrayado */
+    color: #ecf0f1; /* Un gris claro para el texto */
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease; /* Transición suave */
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    /* Color Verde del logo de Temuco */
+    background-color: #6DB33F; 
+    color: white;
+}
+
+/* --- 2. El Contenido Principal --- */
+.main-content {
+    flex-grow: 1; /* Ocupa todo el espacio restante */
+    padding: 30px;
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 2em;
+}
+
+/* --- 3. Tarjetas (Cards) --- */
+.card-container {
+    display: flex; /* Pone las tarjetas una al lado de la otra */
+    gap: 20px; /* Espacio entre tarjetas */
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-basis: 250px; /* Ancho base de cada tarjeta */
+    flex-grow: 1;
+}
+
+.card h3 {
+    font-size: 0.9em;
+    /* Color Gris de "Municipio Ciudadano" */
+    color: #6c757d; 
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card .value {
+    font-size: 2.5em;
+    font-weight: bold;
+    /* Color Azul/Petróleo principal */
+    color: #1E4A7B; 
+}
+
+/* --- 4. Contenido (Ej. Comunicados) --- */
+.content-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content-box h2 {
+    margin-bottom: 20px;
+    /* Color Verde del logo */
+    color: #6DB33F;
+}
+
+.comunicado {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.comunicado:last-child {
+    border-bottom: none;
+}
+.comunicado h4 {
+    font-size: 1.1em;
+    color: #333;
+}
+.comunicado p {
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* --- 5. Estilos del Calendario --- */
+/* (Añadir al final de style.css) */
+
+.calendario-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.calendario-header h3 {
+    font-size: 1.8em;
+    color: #333;
+}
+
+.calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #6c757d;
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendario-grid div {
+    height: 100px;
+    padding: 8px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    font-size: 0.9em;
+}
+
+.dia-pasado {
+    background-color: #f9f9f9;
+    color: #bbb;
+}
+
+.dia-evento {
+    background-color: #fdfae6;
+}
+
+.evento {
+    font-size: 0.8em;
+    padding: 3px;
+    border-radius: 3px;
+    background-color: #6DB33F; /* Verde Temuco */
+    color: white;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.evento.feriado {
+    background-color: #e74c3c; /* Rojo */
+}
+
+/* --- 6. Botón de Acción (para tarjetas) --- */
+/* (Añadir al final de style.css) */
+
+.action-button {
+    text-decoration: none;
+    display: inline-block; /* Para que respete el padding */
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    
+    /* Color Verde Temuco */
+    background-color: #6DB33F; 
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.action-button:hover {
+    /* Color Azul Temuco */
+    background-color: #1E4A7B;
+}
+/* --- 7. Nuevo Estilo para el Usuario en el Sidebar --- */
+.user-display {
+    color: #d1e2f4; /* Un color claro para que destaque */
+    font-size: 0.85em;
+    padding: 0 10px 15px 10px; /* Padding ajustado */
+    border-bottom: 1px solid #4b6b8b; /* Línea divisoria */
+    margin-bottom: 30px; /* Espacio antes de que empiece el menú */
+    text-align: center;
+}
+.user-display b {
+    display: block;
+    font-weight: bold;
+    color: white; 
+    font-size: 1.1em;
+    margin-top: 3px;
+}
+
+/* Restaura el padding del main-content (si lo habías cambiado) */
+.main-content {
+    padding-top: 30px !important; 
+}
+/* --- 8. Estilos de Estados Dinámicos (Solicitudes) --- */
+
+.status-aprobado {
+    color: #27ae60; /* Verde oscuro (Éxito) */
+    background-color: #e6f9ed;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.status-rechazado {
+    color: #e74c3c; /* Rojo (Fallo) */
+    background-color: #fcebeb;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.status-pendiente {
+    color: #f39c12; /* Naranja (Alerta) */
+    background-color: #fff9e6;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 4px;
+}

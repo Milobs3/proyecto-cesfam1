@@ -1,0 +1,92 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* Usamos un gris muy claro de fondo */
+    background-color: #f4f7fa; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 350px;
+    text-align: center;
+}
+
+.logo {
+    width: 150px !important; /* Ajusta el tamaño de tu logo */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.login-container h2 {
+    /* Color Azul/Petróleo del logo */
+    color: #1E4A7B; 
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Para que el padding no afecte el ancho */
+}
+
+.login-button {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    
+    /* Color Verde del logo */
+    background-color: #6DB33F; 
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-button:hover {
+    /* Color Azul/Petróleo al pasar el mouse */
+    background-color: #1E4A7B; 
+}
+.user-display {
+    color: #d1e2f4; /* Un color claro para que destaque */
+    font-size: 0.85em;
+    padding: 0 10px 15px 10px; /* Padding ajustado */
+    border-bottom: 1px solid #4b6b8b; /* Línea divisoria */
+    margin-bottom: 15px; /* Espacio antes de que empiece el menú */
+    text-align: center;
+}
+.user-display b {
+    display: block;
+    font-weight: bold;
+    color: white; 
+    font-size: 1.1em;
+    margin-top: 3px;
+}
+
+/* Restaura el padding del main-content (si lo habías cambiado) */
+.main-content {
+    padding-top: 30px !important; 
+}
